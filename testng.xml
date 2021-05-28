@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- Test Suite -->
+<!-- This test suite will run in parallel mode with 6 threads -->
+<suite name="TestNG Module" parallel="tests" thread-count="6">
+	<listeners>
+		<listener class-name="test.Listeners" />
+	</listeners>
+	<!-- Test Folder -->
+	<test thread-count="5" name="Test">
+		<!-- Test folder level parameterization to send data to be used in all 
+			the test folder -->
+		<parameter name="URL" value="www.facebook.com" />
+		<parameter name="APIKey" value="123" />
+		<!-- Test Files -->
+		<classes>
+			<!-- name="package.filename" -->
+			<class name="test.testNG_TC1">
+				<methods>
+					<!-- Include a specific test case in specific file and to do so we need 
+						to split also class tag into 2 lines -->
+					<include name="demo" />
+					<include name="secondDemo" />
+				</methods>
+			</class>
+			<class name="test.testNG_TC2" />
+		</classes>
+	</test>
+
+	<test thread-count="5" name="Loan">
+		<!-- Test Files -->
+		<classes>
+			<!-- name="package.filename" -->
+			<class name="test.testNG_TC3">
+				<methods>
+					<!-- Exclude a specific test case in specific file and to do so we need 
+						to split also class tag into 2 lines -->
+					<exclude name="mobileLoginLoan" />
+				</methods>
+			</class>
+			<class name="test.testNG_TC4">
+				<methods>
+					<!-- Exclude all test cases where it's name begin with mobile -->
+					<exclude name="mobile.*" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite> 

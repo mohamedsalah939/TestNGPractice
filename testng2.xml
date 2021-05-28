@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- Test Suite -->
+<suite name="TestNG Module">
+	<listeners>
+		<listener class-name="test.Listeners" />
+	</listeners>
+	<!-- Suite level parameterization to send data to be used in all the suite -->
+	<parameter name="URL" value="www.google.com" />
+	<parameter name="APIKey" value="123" />
+	<!-- Test Folder -->
+	<test thread-count="5" name="Test">
+		<!-- Run a whole package at once -->
+		<packages>
+			<package name="test" />
+		</packages>
+	</test>
+
+
+</suite> 
